@@ -1,8 +1,8 @@
 {
-  "name": "cpdf",
-  "version": "0.0.1",
-  "description": "cpdf wrapper for node",
-  "author": "Nathan G <nathan@gnab.fr>",
+  "name": "cpdf-gergogy",
+  "version": "0.0.2",
+  "description": "cpdf wrapper for node, original repository: git+https://github.com/n6g7/node-cpdf.git",
+  "author": "Gergő Gyulai <gergo.gyulai@debhack.tech>",
   "main": "index.js",
   "scripts": {
     "pretest": "jshint index.js && jscs index.js",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/n6g7/node-cpdf.git"
+    "url": "git+https://github.com/gergogy/node-cpdf.git"
   },
   "license": "MIT"
 }
