@@ -1,6 +1,6 @@
 {
-  "name": "cpdf",
-  "version": "0.0.2",
+  "name": "cpdf-gergogy",
+  "version": "0.0.3",
   "description": "cpdf wrapper for node",
   "author": "Nathan G <nathan@gnab.fr>",
   "main": "index.js",
