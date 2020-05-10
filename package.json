@@ -1,6 +1,6 @@
 {
   "name": "cpdf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "cpdf wrapper for node",
   "author": "Nathan G <nathan@gnab.fr>",
   "main": "index.js",
