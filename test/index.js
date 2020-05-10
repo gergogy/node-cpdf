@@ -125,6 +125,24 @@ describe('CPDF', () => {
     });
   });
 
+  describe('blackfills', () => {
+    it('should change page fills', (done) => {
+      const args = { color: '1 0 0' }
+      const filepath = path.join(outPath, 'blackfills.pdf')
+      cpdf.blackfills(testSR, args, filepath)
+        .then(() => Q.nfcall(fs.readdir, outPath))
+        .then((files) => {
+          let hasFile = false
+          files.forEach((f) => {
+            if (f.includes('blackfills')) hasFile = true
+          })
+          expect(hasFile).equals(true, 'File need to be there...')
+        })
+        .then(() => done())
+        .catch(done);
+    });
+  });
+
   after((done) => {
     Q.nfcall(fs.readdir, outPath)
       .then((files) => Promise.all(files.map(f => Q.nfcall(fs.unlink, path.join(outPath, f)))))

@@ -63,6 +63,69 @@ function cropBox(filePath, args, output) {
   return cpdf('Modify CropBox', `-cropbox "${box}" ${filePath}${range} -o ${output}`);
 }
 
+/****************************************************************
+ * Check in https://www.coherentpdf.com/cpdfmanual.pdf Page #58 *
+ * cpdf -blacktext in.pdf -o out.pdf                            *
+ * Note: Blackens all text on the given pages,                  *
+ *       which are not outlines.                                *
+ *       Contrary to its name, this operation can               *
+ *       use another color, if specified with -color.           *
+ * args: { color }                                              *
+ *   - color is optional                                        *
+ ****************************************************************/
+function blacktext(filePath, args, output) {
+  output = output || getTemporaryFilePath();
+
+  let command = '-blacktext';
+
+  if (args.color) {
+    command = `${command} -color "${args.color}"`;
+  }
+
+  return cpdf('Blacktext', `${command} ${filePath} -o ${output}`);
+}
+
+/****************************************************************
+ * Check in https://www.coherentpdf.com/cpdfmanual.pdf Page #58 *
+ * cpdf -blacklines in.pdf -o out.pdf                           *
+ * Note: Blackens all lines on the given pages.                 *
+ *       Contrary to its name, this operation can               *
+ *       use another color, if specified with -color.           *
+ * args: { color }                                              *
+ *   - color is optional                                        *
+ ****************************************************************/
+function blacklines(filePath, args, output) {
+  output = output || getTemporaryFilePath();
+
+  let command = '-blacklines';
+
+  if (args.color) {
+    command = `${command} -color "${args.color}"`;
+  }
+
+  return cpdf('Blacklines', `${command} ${filePath} -o ${output}`);
+}
+
+/****************************************************************
+ * Check in https://www.coherentpdf.com/cpdfmanual.pdf Page #58 *
+ * cpdf -blackfills in.pdf -o out.pdf                           *
+ * Note: Blackens all fills on the given pages.                 *
+ *       Contrary to its name, this operation can               *
+ *       use another color, if specified with -color.           *
+ * args: { color }                                              *
+ *   - color is optional                                        *
+ ****************************************************************/
+function blackfills(filePath, args, output) {
+  output = output || getTemporaryFilePath();
+
+  let command = '-blackfills';
+  if (args.color) {
+    command = `${command} -color "${args.color}"`;
+  }
+
+  return cpdf('Blackfills', `${command} ${filePath} -o ${output}`);
+}
+
 module.exports = {
   countPages,
   merge,
@@ -71,5 +134,8 @@ module.exports = {
   pageInfo,
   mediaBox,
   crop: cropBox,
-  cropBox
+  cropBox,
+  blacktext,
+  blacklines,
+  blackfills
 };
